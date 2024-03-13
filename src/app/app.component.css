@@ -16,7 +16,7 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: start !important;
-    width: 100%;
+    width: 1030%;
 }
 
 .splitter1 {
