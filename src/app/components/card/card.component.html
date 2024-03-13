@@ -1,0 +1,13 @@
+<div class="container-card">
+    <p-card header="Calendar" [style]="{ width: '498px',
+'border-radius' : '5%' ,
+'text-align': 'center'}">
+        <ng-template pTemplate="header">
+
+        </ng-template>
+        <p-calendar class="max-w-full" [(ngModel)]="date" [inline]="true" [showWeek]="true" [style]="{ width: '100%',
+'border-radius' : '5%' }"></p-calendar>
+        <ng-template pTemplate="footer">
+        </ng-template>
+    </p-card>
+</div>

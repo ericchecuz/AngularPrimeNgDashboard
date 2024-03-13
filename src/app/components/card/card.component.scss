@@ -1,0 +1,13 @@
+.container-card {
+  padding: 1%;
+}
+.p-card-body {
+  padding: 0px;
+}
+
+::ng-deep .p-card .p-card-content {
+  padding: 0;
+}
+::ng-deep .p-card .p-card-footer {
+  padding: 0;
+}
