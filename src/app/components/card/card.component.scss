@@ -11,3 +11,43 @@
 ::ng-deep .p-card .p-card-footer {
   padding: 0;
 }
+
+.container-appointment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-appointment-future {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.button-bell {
+  margin-right: 10%;
+}
+.button-info {
+}
+
+::ng-deep .p-button.p-button-icon-only {
+  width: 2rem;
+  padding: 0.3rem 0;
+}
+
+.container-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.container-row {
+}
+
+.container-info-row {
+  display: flex;
+}
