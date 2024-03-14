@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 # AngularPrimeNgDashboard
 Using freelibrary "PrimeNg" with my custom components in Angular Project. 
-=======
-# Prova
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
 
