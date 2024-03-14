@@ -82,7 +82,7 @@
                                         </div>
                                     </td>
                                     <td [style]="{ 'text-align': 'center'}">
-                                        <div pTooltip="hpurs"
+                                        <div pTooltip="hours"
                                             [ngClass]="{'outofstock': hour.hourAvailable === 0, 'lowstock': (hour.hoursEnd > 0),'instock': hour.hourAvailable> 10}">
                                             {{ hour.hoursEnd }}
                                         </div>

@@ -22,8 +22,11 @@
                     <div style="white-space: nowrap;">{{ appuntamento.tipo }}</div>
                 </div>
                 <div class="container-buttons">
-                    <p-button icon="pi pi-bell" [outlined]="true" class="button-bell"
-                        (click)="apriModal(appuntamento)"></p-button>
+                    <p-button icon="pi {{ selectedThemeIcon.icon}} " severity="{{iconSeverity}}" [outlined]="true"
+                        class="button-bell" [@moveIcon]="iconPositionState" (click)="toggleIconColorAndPosition()"
+                        pTooltip="Bookmark" tooltipStyleClass=" width:50px;">
+                    </p-button>
+
                     <p-button icon="pi pi-inbox" [outlined]="true" class="button-info"
                         (click)="apriModal(appuntamento)"></p-button>
                 </div>

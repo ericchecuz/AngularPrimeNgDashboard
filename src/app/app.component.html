@@ -87,8 +87,9 @@
                 <p-avatar image="../assets/images/logo.png.png" shape="circle" />
                 <span class=" text-bluegray-50">Eric Device</span>
               </div>
-              <i class="pi {{ selectedThemeIcon.icon}} icon-menu-top" style="font-size: 1.5rem" pTooltip="ChangeTheme"
-                (click)="toggleTheme()" [@changeIcon]="selectedThemeIcon.icon"></i>
+              <i class="pi {{ selectedThemeIcon.icon}} icon-menu-top" style="font-size: 1.5rem" pTooltip="Change theme"
+                (click)="toggleTheme()" [@changeIcon]="selectedThemeIcon.icon" tooltipPosition="bottom"
+                tooltipStyleClass="white-space:nowrap , background-color:red" tooltip placeholder="Bottom"></i>
             </ng-template>
           </p-toolbar>
 
@@ -98,7 +99,7 @@
             <!-- CONTAINER CARD -->
 
             <app-card [tipoCard]="'calendar'"></app-card>
-            <app-card [tipoCard]="'note'"></app-card>
+            <app-card class="card-note" [tipoCard]="'note'"></app-card>
 
           </div>
           <!-- <div class="card-calendar">

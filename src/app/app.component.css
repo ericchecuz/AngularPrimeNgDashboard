@@ -132,6 +132,10 @@ img {
     width: 38%;
 }
 
+.card-note {
+    padding-top: 2%;
+}
+
 ::ng-deep app-card {
     display: flex;
     width: 498px;
@@ -141,6 +145,8 @@ img {
     display: flex;
     gap: 1%;
     flex-wrap: wrap;
+    padding-left: 1%;
+    ;
 }
 
 /* Aggiungi le tue regole di stile CSS */
@@ -187,4 +193,12 @@ img {
 ::ng-deep .p-button.p-button-text {
     display: flex;
     width: 100%;
+}
+
+::ng-deep .p-tooltip {
+    white-space: nowrap;
+}
+
+.p-tooltip {
+    white-space: nowrap;
 }
