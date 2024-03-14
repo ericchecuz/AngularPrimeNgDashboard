@@ -1,0 +1,118 @@
+<div class="container-main">
+  <p-splitter [style]="{ height: '100%' }" [panelSizes]="[10, 90]" [minSizes]="[5, 90]" styleClass="">
+    <ng-template class="splitter1" pTemplate>
+      <div class="sidecontainer col flex align-items-center justify-content-center">
+        <div class="container-top">
+          <div class="container-img">
+            <img src="../assets/images/logo.png.png" />
+          </div>
+          <div class="container-icon-top">
+            <!-- <i class="pi pi-briefcase icon-menu-top" style="font-size: 1.5rem" pTooltip="Azienda"></i><i
+            class="pi pi-mobile icon-menu-top" pTooltip="+39 3202141282" style="font-size: 1.5rem"></i><i
+            class="pi pi-users icon-menu-top" pTooltip="eric-device@org.it" style="font-size: 1.5rem"></i> -->
+          </div>
+        </div>
+        <div class="container-menu" #containerMenu>
+          <div class="container-button ">
+            <p-button [text]="true">
+              <i class="pi pi-table icon-menu"></i>
+              <span #containerButton class="button-label">Home</span>
+            </p-button>
+
+          </div>
+          <div class="container-button">
+            <p-button [text]="true"><i class="pi pi-users icon-menu"></i>
+              <span #containerButton class="button-label">Team</span>
+            </p-button>
+          </div>
+          <div class="container-button">
+            <p-button [text]="true"><i class="pi pi-chart-line icon-menu"></i>
+              <span #containerButton class="button-label">Overview</span>
+            </p-button>
+          </div>
+          <div class="container-button">
+            <p-button [text]="true"><i class="pi pi-cog icon-menu"></i>
+              <span #containerButton class="button-label">Settings</span>
+            </p-button>
+          </div>
+          <div class="container-button">
+            <p-button [text]="true"><i class="pi pi-sign-out icon-menu"></i>
+              <span #containerButton class="button-label" style="white-space: nowrap;">Log-out</span>
+            </p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate>
+      <div class="splitter2">
+        <div class="container-toolbar">
+          <p-toolbar styleClass="bg-gray-900 shadow-2" [style]="{
+          'display': 'flex',
+        'width': '100%',
+        'height': '7%',
+        'padding': '0px',
+        'border-radius': '1rem',
+        'background-image':
+          'linear-gradient(to right, var(--bluegray-500), var(--bluegray-800))'
+        
+      }">
+
+            <ng-template pTemplate="start">
+            </ng-template>
+            <ng-template pTemplate="center">
+              <div class="flex flex-wrap align-items-center gap-3">
+                <button
+                  class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
+                  <i class="pi pi-home text-2xl"></i>
+                </button>
+                <button
+                  class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
+                  <i class="pi pi-user text-2xl"></i>
+                </button>
+                <button
+                  class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
+                  <i class="pi pi-search text-2xl"></i>
+                </button>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="end">
+
+              <div class="flex align-items-center gap-2">
+                <button
+                  class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
+                  <i class="pi pi-bell text-3xl" pBadge value="2" style=""></i>
+
+                </button>
+                <p-avatar image="../assets/images/logo.png.png" shape="circle" />
+                <span class=" text-bluegray-50">Eric Device</span>
+              </div>
+              <i class="pi {{ selectedThemeIcon.icon}} icon-menu-top" style="font-size: 1.5rem" pTooltip="Change theme"
+                (click)="toggleTheme()" [@changeIcon]="selectedThemeIcon.icon" tooltipPosition="bottom"
+                tooltipStyleClass="white-space:nowrap , background-color:red" tooltip placeholder="Bottom"></i>
+            </ng-template>
+          </p-toolbar>
+
+        </div>
+        <div class="container-cards">
+          <div class="card-calendar">
+            <!-- CONTAINER CARD -->
+
+            <app-card [tipoCard]="'calendar'"></app-card>
+            <app-card class="card-note" [tipoCard]="'note'"></app-card>
+
+          </div>
+          <!-- <div class="card-calendar">
+          <app-card></app-card>
+        </div> -->
+          <div class="card-user">
+            <user-card></user-card>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-splitter>
+</div>
+
+<!-- <p-dropdown [options]="themes" [(ngModel)]="selectedTheme" (onChange)="changeTheme(selectedTheme.id)"
+  styleClass="mb-3"></p-dropdown> -->

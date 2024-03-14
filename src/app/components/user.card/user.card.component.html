@@ -1,0 +1,129 @@
+<div class="container-card">
+    <p-card [style]="{ width: '360px',
+'border-radius' : '5%' ,
+'text-align': 'center'}">
+        <div class="container-card-top">
+            <div class="avatar"><img class="img-user" src="../assets/images/logo.png.png">
+                <span class=" text-black-50">Eric Device</span>
+            </div>
+        </div>
+        <p-divider></p-divider>
+
+        <ng-template pTemplate="footer">
+        </ng-template>
+        <div class="container-fieldset-top">
+            <p-fieldset legend="Position">
+                <p class="m-0">
+                    Junior Developer
+                </p>
+            </p-fieldset>
+            <p-fieldset legend="Hiring-date">
+                <p class="m-0">
+                    04/02/2022
+                </p>
+            </p-fieldset>
+        </div>
+        <div class="container-fieldset-mid">
+            <p-fieldset [style]="{'padding' : '1rem' }" [toggleable]="true">
+                <ng-template pTemplate="header">
+                    <div class="flex align-items-center gap-2 px-2">
+                        <span class="font-bold">Annual vacation</span>
+                        <i class="pi pi-map-marker "></i>
+                    </div>
+                </ng-template>
+                <p class="m-0">
+                    <p-table [value]="hours" [tableStyle]="{ }">
+                        <ng-template pTemplate="header">
+                            <tr [style]="{ 'text-align': 'center'}">
+                                <th [style]="{ 'text-align': 'center'}">Available</th>
+                                <th [style]="{ 'text-align': 'center'}">Up to end</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-hour>
+                            <tr [style]="{ 'text-align': 'center'}">
+                                <td [style]="{ 'text-align': 'center'}">
+                                    <div pTooltip="days" [ngClass]="{'instock': (hour.hoursAvailable> 10)}">
+                                        {{ hour.hoursAvailable }}
+                                    </div>
+                                </td>
+                                <td [style]="{ 'text-align': 'center'}">
+                                    <div pTooltip="days"
+                                        [ngClass]="{'outofstock': hour.hourAvailable === 0, 'lowstock': (hour.hoursEnd > 0),'instock': hour.hourAvailable> 10}">
+                                        {{ hour.hoursEnd }}
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+
+                </p>
+            </p-fieldset>
+            <div class="container-fieldset-bottom">
+                <p-fieldset [toggleable]="true">
+                    <ng-template class="fieldset" pTemplate="header">
+                        <div class="flex align-items-center gap-2 px-2">
+                            <span class="font-bold">Annual leave Hours</span>
+                            <i class="pi pi-clock "></i>
+                        </div>
+                    </ng-template>
+                    <p class="m-0">
+                        <p-table [value]="hours" [tableStyle]="{ }">
+                            <ng-template pTemplate="header">
+                                <tr [style]="{ 'text-align': 'center'}">
+                                    <th [style]="{ 'text-align': 'center'}">Available</th>
+                                    <th [style]="{ 'text-align': 'center'}">Up to end</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-hour>
+                                <tr [style]="{ 'text-align': 'center'}">
+                                    <td [style]="{ 'text-align': 'center'}">
+                                        <div pTooltip="hours" [ngClass]="{'instock': (hour.hoursAvailable> 10)}">
+                                            {{ hour.hoursAvailable }}
+                                        </div>
+                                    </td>
+                                    <td [style]="{ 'text-align': 'center'}">
+                                        <div pTooltip="hours"
+                                            [ngClass]="{'outofstock': hour.hourAvailable === 0, 'lowstock': (hour.hoursEnd > 0),'instock': hour.hourAvailable> 10}">
+                                            {{ hour.hoursEnd }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+
+                    </p>
+                </p-fieldset>
+            </div>
+            <p-divider></p-divider>
+            <div class="container-metergroup">
+                <div class="metergroup">
+                    <div class="meter">
+                        <div class="meter-fill"
+                            [ngStyle]="{'width' : '8%', 'height' : '0.5rem', 'background-color':'#34d399' , 'border-bottom-left-radius': '6px' , 'border-top-left-radius': '6px'}">
+                        </div>
+                        <div class="meter-fill"
+                            [ngStyle]="{'width' : '16%', 'height' : '0.5rem', 'background-color':'#fbbf24' }">
+                        </div>
+                        <div class="meter-fill"
+                            [ngStyle]="{'width' : '24%', 'height' : '0.5rem', 'background-color':'#60a5fa' }">
+                        </div>
+                        <div class="meter-fill"
+                            [ngStyle]="{'width' : '32%', 'height' : '0.5rem', 'background-color':'#c084fc' , 'border-bottom-right-radius': '6px' , 'border-top-right-radius': '6px'}">
+                        </div>
+                    </div>
+                    <div style="display:flex" class="meter-icon">
+                        <div style="color:#34d399" class="icon-meter"><i class="pi pi-map-marker "></i>Holidays (8%)
+                        </div>
+                        <div style="color:#fbbf24" class="icon-meter"><i class="pi pi pi-table "></i>Courses (16%)
+                        </div>
+                        <div style="color:#c084fc" class="icon-meter icon-meter-others"><i
+                                class="pi  pi-building "></i>Project (24%)</div>
+                        <div style="" style="color:#60a5fa" class="icon-meter-others"><i
+                                class="pi  pi-building "></i>Others
+                            (32%)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-card>
+</div>

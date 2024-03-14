@@ -1,0 +1,18 @@
+@import "primeicons/primeicons.css";
+@import "https://fonts.googleapis.com/css2?family=Viga&display=swap";
+:root {
+  --font-family: "Montserrat", sans-serif;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0 !important;
+  font-family: "Viga", sans-serif;
+}
+
+.viga-regular {
+  font-family: "Viga", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

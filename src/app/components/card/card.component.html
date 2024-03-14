@@ -1,0 +1,59 @@
+<div class="container-card">
+    <p-card *ngIf="tipoCard === 'calendar'" header="Calendar"
+        [style]="{ width: '498px', 'border-radius': '5%', 'text-align': 'center'}">
+        <ng-template pTemplate="header"></ng-template>
+        <p-calendar class="max-w-full" [(ngModel)]="date" [inline]="true" [showWeek]="true"
+            [style]="{ width: '100%', 'border-radius': '5%' }"></p-calendar>
+        <ng-template pTemplate="footer"></ng-template>
+    </p-card>
+
+    <p-card *ngIf="tipoCard === 'note'" header="Upcoming Dates:"
+        [style]="{ width: '498px', 'border-radius': '5%', 'text-align': 'center'}">
+        <p-divider align="center">
+            <span class="p-tag">Today</span>
+        </p-divider>
+
+        <ng-container *ngFor="let appuntamento of prossimiAppuntamenti">
+            <div *ngIf="isToday(appuntamento.data)" class="container-appointment">
+                <div class="container-info-row">
+                    <div style="white-space: nowrap;">{{ appuntamento.data }}</div>
+                </div>
+                <div class="container-info-row">
+                    <div style="white-space: nowrap;">{{ appuntamento.tipo }}</div>
+                </div>
+                <div class="container-buttons">
+                    <p-button icon="pi {{ selectedThemeIcon.icon}} " severity="{{iconSeverity}}" [outlined]="true"
+                        class="button-bell" [@moveIcon]="iconPositionState" (click)="toggleIconColorAndPosition()"
+                        pTooltip="Bookmark" tooltipStyleClass=" width:50px;">
+                    </p-button>
+
+                    <p-button icon="pi pi-inbox" [outlined]="true" class="button-info"
+                        (click)="apriModal(appuntamento)"></p-button>
+                </div>
+            </div>
+        </ng-container>
+
+        <p-divider align="center">
+            <span class="p-tag">Future</span>
+        </p-divider>
+        <div class="container-row">
+            <ng-container *ngFor="let appuntamento of prossimiAppuntamenti">
+                <div *ngIf="!isToday(appuntamento.data)" class="container-appointment-future">
+                    <div class="container-info-row">
+                        <div style="white-space: nowrap;">{{ appuntamento.data }}</div>
+                    </div>
+                    <div class="container-info-row">
+                        <div style="white-space: nowrap;">{{ appuntamento.tipo }}</div>
+                    </div>
+                    <div class="container-buttons">
+                        <p-button icon="pi pi-bell" [outlined]="true" class="button-bell"
+                            (click)="apriModal(appuntamento)"></p-button>
+                        <p-button icon="pi pi-inbox" [outlined]="true" class="button-info"
+                            (click)="apriModal(appuntamento)"></p-button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </p-card>
+
+</div>

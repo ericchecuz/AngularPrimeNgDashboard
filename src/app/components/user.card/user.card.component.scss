@@ -1,0 +1,118 @@
+.container-card {
+  padding: 1%;
+}
+.p-card-body {
+  padding: 0px;
+}
+
+::ng-deep .p-avatar-xl {
+  width: 8rem;
+  height: 8rem;
+}
+.img-user {
+  display: flex;
+  height: 50%;
+  width: 20%;
+  border-radius: 50%;
+  padding: 1px;
+  background: red;
+  background-color: red;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.container-fieldset-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6%;
+}
+
+::ng-deep .p-fieldset .p-fieldset-content {
+  padding: 0px;
+}
+
+::ng-deep .p-fieldset.p-fieldset-toggleable .p-fieldset-legend a {
+  padding: 0rem;
+}
+
+::ng-deep .p-fieldset .p-fieldset-legend {
+  padding: 1rem;
+}
+::ng-deep .p-datatable-wrapper {
+  overflow: auto;
+  border-radius: 10px;
+}
+
+.outofstock {
+  font-weight: 700;
+  color: #ff5252;
+  text-decoration: line-through;
+}
+
+.lowstock {
+  font-weight: 700;
+  color: #ffa726;
+}
+
+.instock {
+  font-weight: 700;
+  color: #66bb6a;
+}
+
+.metergroup {
+  margin-top: 5%;
+  height: 0.5rem;
+  background: #e5e7eb;
+  border-radius: 6px;
+  box-sizing: border-box;
+  margin-bottom: 15%;
+}
+
+.meter {
+  display: flex;
+  flex-direction: row;
+}
+
+.meter-icon {
+  display: flex;
+  padding: 3%;
+  gap: 5%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 0.5rem;
+}
+
+.icon-meter {
+  display: flex;
+  gap: 5%;
+  align-items: center;
+  font-size: 12px;
+  width: 35%;
+}
+
+.icon-meter-others {
+  display: flex;
+  gap: 5%;
+  align-items: center;
+  margin-top: 4%;
+  font-size: 12px;
+}
+
+.container-metergroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5%;
+}
+.container-fieldset-bottom {
+  margin-top: 5%;
+}
