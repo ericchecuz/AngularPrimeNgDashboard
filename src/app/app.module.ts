@@ -25,9 +25,15 @@ import { DividerModule } from 'primeng/divider';
 import { TableModule } from 'primeng/table';
 import { FieldsetModule } from 'primeng/fieldset';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, UserCardComponent, SidebarComponent],
+  declarations: [
+    AppComponent,
+    CardComponent,
+    UserCardComponent,
+    SidebarComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -50,6 +56,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     DividerModule,
     FieldsetModule,
     TableModule,
+    DialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

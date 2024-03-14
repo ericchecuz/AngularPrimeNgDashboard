@@ -12,23 +12,6 @@ import { AppService } from 'src/app/app.service';
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  animations: [
-    trigger('moveIcon', [
-      state(
-        'left',
-        style({
-          transform: 'rotateY(0deg)',
-        })
-      ),
-      state(
-        'right',
-        style({
-          transform: 'rotateY(180deg)',
-        })
-      ),
-      transition('left <=> right', animate('0.5s ease-in-out')),
-    ]),
-  ],
 })
 export class CardComponent {
   constructor(private appService: AppService) {}
@@ -40,24 +23,30 @@ export class CardComponent {
     {
       data: '2024-03-14',
       link: 'http://link-riunione',
-      progetto: 'Nome Progetto',
+      team: 'Activision',
       tipo: 'Reunion',
+      iconSeverity: '',
+      visible: false,
     },
     {
       data: '2024-05-13',
       link: 'http://link-riunione',
-      progetto: 'Nome Progetto',
+      team: 'Microsfot',
       tipo: 'Course',
+      iconSeverity: '',
+      visible: false,
     },
     {
       data: '2024-08-13',
       link: 'http://link-riunione',
-      progetto: 'Nome Progetto',
+      team: 'Eric Device',
+      progetto: 'Start Project',
       tipo: 'SAL',
+      iconSeverity: '',
+      visible: false,
     },
     // Altri appuntamenti...
   ];
-
   apriModal(appuntamento: any) {
     // Logica per aprire il modal con le informazioni dell'appuntamento
     console.log(appuntamento);
@@ -88,24 +77,33 @@ export class CardComponent {
     },
   ];
 
-  selectedTheme: { id: string; label: string } = this.themes[0];
-  themesIcon = [
-    { id: 1, name: 'Light', icon: 'pi-bell' },
-    { id: 2, name: 'Dark', icon: 'pi-bell ' },
-  ];
-  selectedThemeIcon = this.themesIcon[0];
-  iconPositionState: string = 'left';
+  iconPositionState: boolean = false;
   iconSeverity: string = '';
+  iconSelectedIndex: number = -1; // Inizializzato a -1 per indicare nessuna selezione
 
-  toggleIconColorAndPosition() {
-    if (this.iconPositionState === 'left') {
-      this.iconSeverity = 'danger';
+  // toggleIconColorAndPosition(appuntamento: any) {
+  //   this.iconPositionState = !this.iconPositionState; // Inverti lo stato
+
+  //   if (this.iconPositionState) {
+  //     this.iconSeverity = 'danger'; // Se lo stato è true, imposta l'iconSeverity su 'danger'
+  //   } else {
+  //     this.iconSeverity = ''; // Altrimenti, reimposta l'iconSeverity a una stringa vuota
+  //   }
+  // }
+  toggleIconColorAndPosition(appuntamento: any, index: number) {
+    // Se l'appuntamento corrente è già selezionato, deselezionalo
+    if (this.iconSelectedIndex === index) {
+      this.iconSelectedIndex = -1;
+      appuntamento.iconSeverity = '';
     } else {
-      this.iconSeverity = '';
+      // Altrimenti, deseleziona l'appuntamento precedente se ce n'è uno
+      if (this.iconSelectedIndex !== -1) {
+        this.prossimiAppuntamenti[this.iconSelectedIndex].iconSeverity = '';
+      }
+      // Seleziona l'appuntamento corrente
+      this.iconSelectedIndex = index;
+      appuntamento.iconSeverity = 'danger';
     }
-
-    this.iconPositionState =
-      this.iconPositionState === 'left' ? 'right' : 'left';
   }
   changeTheme(themeId: string) {
     console.log(themeId);
@@ -118,4 +116,11 @@ export class CardComponent {
     tooltipEvent: 'hover',
     tooltipPosition: 'left',
   };
+
+  // BUTTON OPEN MODAL
+  visible: boolean = false;
+
+  showDialog(appuntamento: any) {
+    appuntamento.visible = true;
+  }
 }

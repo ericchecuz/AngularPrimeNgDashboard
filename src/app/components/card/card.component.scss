@@ -49,5 +49,29 @@
 }
 
 .container-info-row {
+  align-items: center;
   display: flex;
+}
+
+::ng-deep .p-dialog-footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .p-dialog-header {
+  display: flex;
+}
+
+::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-left: 37%;
+}
+
+::ng-deep .p-dialog .p-dialog-content {
+  background: #ffffff;
+  color: #495057;
+  padding-left: 14%;
+  padding-bottom: 5%;
 }

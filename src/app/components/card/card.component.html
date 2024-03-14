@@ -13,7 +13,7 @@
             <span class="p-tag">Today</span>
         </p-divider>
 
-        <ng-container *ngFor="let appuntamento of prossimiAppuntamenti">
+        <ng-container *ngFor="let appuntamento of prossimiAppuntamenti; let i=index">
             <div *ngIf="isToday(appuntamento.data)" class="container-appointment">
                 <div class="container-info-row">
                     <div style="white-space: nowrap;">{{ appuntamento.data }}</div>
@@ -22,13 +22,42 @@
                     <div style="white-space: nowrap;">{{ appuntamento.tipo }}</div>
                 </div>
                 <div class="container-buttons">
-                    <p-button icon="pi {{ selectedThemeIcon.icon}} " severity="{{iconSeverity}}" [outlined]="true"
-                        class="button-bell" [@moveIcon]="iconPositionState" (click)="toggleIconColorAndPosition()"
-                        pTooltip="Bookmark" tooltipStyleClass=" width:50px;">
-                    </p-button>
+                    <p-button icon="pi pi-bell" [outlined]="true" class="button-bell"
+                        (click)="toggleIconColorAndPosition(appuntamento, i)" pTooltip="Bookmark"
+                        [severity]="appuntamento.iconSeverity"></p-button>
 
                     <p-button icon="pi pi-inbox" [outlined]="true" class="button-info"
-                        (click)="apriModal(appuntamento)"></p-button>
+                        (click)="showDialog(appuntamento)"></p-button>
+                    <p-dialog header="{{appuntamento.tipo}}" [(visible)]="appuntamento.visible" [modal]="true"
+                        [style]="{ width: '25%' }" [draggable]="true" [resizable]="false">
+                        <div class="container-header">
+                            <div class="container-info-row" style="padding-bottom: 5%;">
+                                <i class="pi pi-users " style="padding-right:15%; font-size: 1.5rem"></i>
+                                <div style="white-space: nowrap;">{{ appuntamento.team + " Team" }}</div>
+                            </div>
+                        </div>
+                        <div class="container-modal">
+                            <div class="container-info-row" style="padding-bottom: 5%;">
+                                <i class="pi pi-calendar " style="padding-right:15%; font-size: 1.5rem"></i>
+                                <div style="white-space: nowrap;">{{ appuntamento.data }}</div>
+                            </div>
+                            <div class="container-info-row" style="padding-bottom: 5%;">
+                                <i class="pi pi-book " style="font-size: 1.5rem"
+                                    style="padding-right:15%;font-size: 1.5rem"></i>
+                                <div style="white-space: nowrap;">{{ appuntamento.tipo }}</div>
+                            </div>
+                            <div class="container-info-row">
+                                <i class=" pi pi-globe " style=" font-size: 1.5rem"
+                                    style="padding-right:15%;font-size: 1.5rem"></i>
+                                <div style="white-space: nowrap;">{{ appuntamento.link }}</div>
+                            </div>
+                        </div>
+                        <ng-template pTemplate="footer">
+                            <p-button class="button-modal" [text]="true" icon="pi pi-check "
+                                (click)="appuntamento.visible = false" label="Close" severity="danger" pAutoFocus
+                                [autofocus]="true"></p-button>
+                        </ng-template>
+                    </p-dialog>
                 </div>
             </div>
         </ng-container>
@@ -37,7 +66,7 @@
             <span class="p-tag">Future</span>
         </p-divider>
         <div class="container-row">
-            <ng-container *ngFor="let appuntamento of prossimiAppuntamenti">
+            <ng-container *ngFor="let appuntamento of prossimiAppuntamenti; let i=index">
                 <div *ngIf="!isToday(appuntamento.data)" class="container-appointment-future">
                     <div class="container-info-row">
                         <div style="white-space: nowrap;">{{ appuntamento.data }}</div>
@@ -47,9 +76,41 @@
                     </div>
                     <div class="container-buttons">
                         <p-button icon="pi pi-bell" [outlined]="true" class="button-bell"
-                            (click)="apriModal(appuntamento)"></p-button>
+                            (click)="toggleIconColorAndPosition(appuntamento, i)" pTooltip="Bookmark"
+                            [severity]="appuntamento.iconSeverity"></p-button>
+
                         <p-button icon="pi pi-inbox" [outlined]="true" class="button-info"
-                            (click)="apriModal(appuntamento)"></p-button>
+                            (click)="showDialog(appuntamento)"></p-button>
+                        <p-dialog header="{{appuntamento.tipo}}" [(visible)]="appuntamento.visible" [modal]="true"
+                            [style]="{ width: '25%' }" [draggable]="true" [resizable]="false">
+                            <div class="container-header">
+                                <div class="container-info-row" style="padding-bottom: 5%;">
+                                    <i class="pi pi-users " style="padding-right:15%; font-size: 1.5rem"></i>
+                                    <div style="white-space: nowrap;">{{ appuntamento.team + " Team" }}</div>
+                                </div>
+                            </div>
+                            <div class="container-modal">
+                                <div class="container-info-row" style="padding-bottom: 5%;">
+                                    <i class="pi pi-calendar " style="padding-right:15%; font-size: 1.5rem"></i>
+                                    <div style="white-space: nowrap;">{{ appuntamento.data }}</div>
+                                </div>
+                                <div class="container-info-row" style="padding-bottom: 5%;">
+                                    <i class="pi pi-book " style="font-size: 1.5rem"
+                                        style="padding-right:15%;font-size: 1.5rem"></i>
+                                    <div style="white-space: nowrap;">{{ appuntamento.tipo }}</div>
+                                </div>
+                                <div class="container-info-row">
+                                    <i class=" pi pi-globe " style=" font-size: 1.5rem"
+                                        style="padding-right:15%;font-size: 1.5rem"></i>
+                                    <div style="white-space: nowrap;">{{ appuntamento.link }}</div>
+                                </div>
+                            </div>
+                            <ng-template pTemplate="footer">
+                                <p-button class="button-modal" [text]="true" icon="pi pi-check "
+                                    (click)="appuntamento.visible = false" label="Close" severity="danger" pAutoFocus
+                                    [autofocus]="true"></p-button>
+                            </ng-template>
+                        </p-dialog>
                     </div>
                 </div>
             </ng-container>

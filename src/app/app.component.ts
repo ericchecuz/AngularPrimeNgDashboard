@@ -21,6 +21,7 @@ import {
   SplitterResizeEndEvent,
   SplitterResizeStartEvent,
 } from 'primeng/splitter/public_api';
+import { TooltipOptions } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -149,4 +150,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     console.log(themeId);
     this.appService.switchTheme(themeId);
   }
+
+  tooltipOptions: TooltipOptions = {
+    showDelay: 150,
+    hideDelay: 50,
+    tooltipEvent: 'hover',
+    tooltipPosition: 'bottom',
+    tooltipStyleClass: 'custom-tooltip',
+  };
 }
