@@ -1,0 +1,39 @@
+<div class="sidecontainer col flex align-items-center justify-content-center" #containerMenu>
+    <div class="container-top">
+        <div class="container-img">
+            <img src="../assets/images/logo.png.png" />
+        </div>
+        <div class="container-icon-top">
+            <!-- <i class="pi pi-briefcase icon-menu-top" style="font-size: 1.5rem" pTooltip="Azienda"></i><i
+            class="pi pi-mobile icon-menu-top" pTooltip="+39 3202141282" style="font-size: 1.5rem"></i><i
+            class="pi pi-users icon-menu-top" pTooltip="eric-device@org.it" style="font-size: 1.5rem"></i> -->
+        </div>
+    </div>
+    <div class="container-menu">
+        <div class="container-button">
+            <p-button [text]="true"><i class="pi pi-table icon-menu"></i>
+                <div *ngIf="showText">Home</div>
+            </p-button>
+        </div>
+        <div class="container-button">
+            <p-button [text]="true"><i class="pi pi-users icon-menu"></i>
+                <div *ngIf="showText">Team</div>
+            </p-button>
+        </div>
+        <div class="container-button">
+            <p-button [text]="true"><i class="pi pi-chart-line icon-menu"></i>
+                <div *ngIf="showText">Overview</div>
+            </p-button>
+        </div>
+        <div class="container-button">
+            <p-button [text]="true"><i class="pi pi-cog icon-menu"></i>
+                <div *ngIf="showText">Settings</div>
+            </p-button>
+        </div>
+        <div class="container-button">
+            <p-button [text]="true"><i class="pi pi-sign-out icon-menu"></i>
+                <div *ngIf="showText">Logout</div>
+            </p-button>
+        </div>
+    </div>
+</div>

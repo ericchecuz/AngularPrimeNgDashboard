@@ -1,0 +1,53 @@
+.container-card {
+  padding: 1%;
+}
+.p-card-body {
+  padding: 0px;
+}
+
+::ng-deep .p-card .p-card-content {
+  padding: 0;
+}
+::ng-deep .p-card .p-card-footer {
+  padding: 0;
+}
+
+.container-appointment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-appointment-future {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.button-bell {
+  margin-right: 15%;
+}
+.button-info {
+}
+
+::ng-deep .p-button.p-button-icon-only {
+  width: 2rem;
+  padding: 0.3rem 0;
+}
+
+.container-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.container-row {
+}
+
+.container-info-row {
+  display: flex;
+}
