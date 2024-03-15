@@ -19,9 +19,16 @@ export class CardComponent {
   date: Date[] | undefined;
   @Input() tipoCard: string | undefined;
 
+  members: any[] = [
+    {
+      nome: 'Eric',
+      cognome: 'Checuz',
+    },
+  ];
+
   prossimiAppuntamenti: any[] = [
     {
-      data: '2024-03-14',
+      data: '2024-03-15',
       link: 'http://link-riunione',
       team: 'Activision',
       tipo: 'Reunion',

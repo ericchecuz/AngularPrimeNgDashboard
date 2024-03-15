@@ -117,4 +117,16 @@
         </div>
     </p-card>
 
+
+    <p-card *ngIf="tipoCard === 'team-member'"
+        [style]="{ width: '270px', 'border-radius': '5%', 'text-align': 'center' , padding : '0'}">
+        <div class="flex container-member ">
+            <p-avatar image="../assets/images/logo.png.png" size="large" shape="circle" />
+            <div class="content-member">
+                <span class="">Eric Checuz</span>
+                <span class="level">Junior Developer</span>
+            </div>
+            <i class="pi pi-info-circle " style="padding-right:5%; font-size: 1.5rem"></i>
+        </div>
+    </p-card>
 </div>

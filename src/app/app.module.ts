@@ -26,6 +26,9 @@ import { TableModule } from 'primeng/table';
 import { FieldsetModule } from 'primeng/fieldset';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DialogModule } from 'primeng/dialog';
+import { CardTeamMembersComponent } from './components/card-team-members/card-team-members.component';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { DialogModule } from 'primeng/dialog';
     CardComponent,
     UserCardComponent,
     SidebarComponent,
+    CardTeamMembersComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,8 @@ import { DialogModule } from 'primeng/dialog';
     FieldsetModule,
     TableModule,
     DialogModule,
+    ScrollTopModule,
+    ScrollPanelModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

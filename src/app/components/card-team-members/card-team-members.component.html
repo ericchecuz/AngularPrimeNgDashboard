@@ -1,0 +1,24 @@
+<div class="container-card">
+    <p-card header="Team" [style]="{ width: '380px', 'border-radius': '5%', 'text-align': 'center'}">
+        <ng-template pTemplate="header"></ng-template>
+        <p-divider align="center">
+            <span class="p-tag">Members</span>
+        </p-divider>
+        <div class="card">
+            <div style="width: 340px; height:360px; overflow: auto ; display: flex; justify-content: center;">
+                <p class="container-card-member">
+                    <app-card tipoCard="team-member"></app-card>
+                    <app-card tipoCard="team-member"></app-card>
+                    <app-card tipoCard="team-member"></app-card>
+                    <app-card tipoCard="team-member"></app-card>
+                    <app-card tipoCard="team-member"></app-card>
+                    <app-card tipoCard="team-member"></app-card>
+                </p>
+                <p-scrollTop target="parent" styleClass="custom-scrolltop custombar1" [threshold]="100"
+                    icon="pi pi-arrow-up"></p-scrollTop>
+            </div>
+        </div>
+
+        <ng-template pTemplate="footer"></ng-template>
+    </p-card>
+</div>

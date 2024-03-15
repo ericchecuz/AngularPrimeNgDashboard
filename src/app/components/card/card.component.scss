@@ -75,3 +75,26 @@
   padding-left: 14%;
   padding-bottom: 5%;
 }
+
+.container-member {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-member {
+  display: flex;
+  flex-direction: column;
+}
+
+.divider-member {
+  margin: 0 !important;
+}
+
+::ng-deep .p-card .p-card-body {
+  padding: 1.25rem;
+}
+
+.level {
+  font-size: 12px;
+}

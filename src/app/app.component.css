@@ -129,16 +129,24 @@ img {
 }
 
 .card-calendar {
-    width: 38%;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-note {
-    padding-top: 2%;
+    display: flex;
+}
+
+.card-user {
+    display: flex;
+}
+
+.card-team {
+    display: flex;
 }
 
 ::ng-deep app-card {
     display: flex;
-    width: 498px;
 }
 
 .container-cards {

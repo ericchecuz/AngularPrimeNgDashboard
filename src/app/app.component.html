@@ -97,16 +97,14 @@
         <div class="container-cards">
           <div class="card-calendar">
             <!-- CONTAINER CARD -->
-
             <app-card [tipoCard]="'calendar'"></app-card>
             <app-card class="card-note" [tipoCard]="'note'"></app-card>
-
           </div>
-          <!-- <div class="card-calendar">
-          <app-card></app-card>
-        </div> -->
           <div class="card-user">
             <user-card></user-card>
+          </div>
+          <div class="card-teams">
+            <app-card-team-members></app-card-team-members>
           </div>
         </div>
       </div>
