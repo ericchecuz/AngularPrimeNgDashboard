@@ -3,3 +3,13 @@
 //     flex-direction: column;
 //     gap: 5%;
 // }
+::ng-deep .container-card-member .p-card .p-card-body {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+::ng-deep .container-card-member .container-card {
+  padding-bottom: 5px;
+}

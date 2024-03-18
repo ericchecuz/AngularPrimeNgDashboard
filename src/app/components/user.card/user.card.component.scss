@@ -116,3 +116,7 @@
 .container-fieldset-bottom {
   margin-top: 5%;
 }
+
+::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  padding: 10px;
+}

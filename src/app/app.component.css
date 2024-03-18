@@ -151,7 +151,7 @@ img {
 
 .container-cards {
     display: flex;
-    gap: 1%;
+    gap: 3%;
     flex-wrap: wrap;
     padding-left: 1%;
     ;
