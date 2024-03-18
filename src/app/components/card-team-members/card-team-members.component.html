@@ -5,15 +5,13 @@
             <span class="p-tag">Members</span>
         </p-divider>
         <div class="card">
-            <div style="width: 340px; height:360px; overflow: auto ; display: flex; justify-content: center;">
-                <p class="container-card-member">
-                    <app-card tipoCard="team-member"></app-card>
-                    <app-card tipoCard="team-member"></app-card>
-                    <app-card tipoCard="team-member"></app-card>
-                    <app-card tipoCard="team-member"></app-card>
-                    <app-card tipoCard="team-member"></app-card>
-                    <app-card tipoCard="team-member"></app-card>
-                </p>
+            <div
+                style="width: 340px; height:360px; overflow: auto ; display: flex; justify-content: space-between; flex-direction: column;">
+                <ng-container *ngFor="let member of members">
+                    <div class="container-card-member">
+                        <app-card tipoCard="team-member" [member]="member"></app-card>
+                    </div>
+                </ng-container>
                 <p-scrollTop target="parent" styleClass="custom-scrolltop custombar1" [threshold]="100"
                     icon="pi pi-arrow-up"></p-scrollTop>
             </div>

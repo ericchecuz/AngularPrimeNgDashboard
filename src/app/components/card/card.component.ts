@@ -18,13 +18,7 @@ export class CardComponent {
 
   date: Date[] | undefined;
   @Input() tipoCard: string | undefined;
-
-  members: any[] = [
-    {
-      nome: 'Eric',
-      cognome: 'Checuz',
-    },
-  ];
+  @Input() member: any;
 
   prossimiAppuntamenti: any[] = [
     {
@@ -54,6 +48,7 @@ export class CardComponent {
     },
     // Altri appuntamenti...
   ];
+
   apriModal(appuntamento: any) {
     // Logica per aprire il modal con le informazioni dell'appuntamento
     console.log(appuntamento);

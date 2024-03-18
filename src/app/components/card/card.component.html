@@ -117,16 +117,49 @@
         </div>
     </p-card>
 
-
     <p-card class="card-team" *ngIf="tipoCard === 'team-member'"
-        [style]="{ width: '270px', 'border-radius': '10px', 'text-align': 'center' , padding : '0'}">
+        [style]="{ width: '300px', 'border-radius': '10px', 'text-align': 'center' , padding : '0'}">
+
         <div class="flex container-member ">
             <p-avatar image="../assets/images/logo.png.png" size="large" shape="circle" />
             <div class="content-member">
-                <span class="">Eric Checuz</span>
-                <span class="level">Junior Developer</span>
+                <span class="">{{member.nome}} {{member.cognome}}</span>
+                <span class="level">{{member.mansione}}</span>
             </div>
-            <i class="pi pi-info-circle " style="padding-right:5%; font-size: 1.5rem"></i>
+            <p-button icon="pi pi-info-circle" [outlined]="true" class="button-info"
+                (click)="showDialog(member)"></p-button>
+            <p-dialog header="Team's member" [(visible)]="member.visible" [modal]="true" [style]="{ width: '600px' }"
+                [draggable]="true" [resizable]="false">
+                <div class="content-dialog-member">
+                    <div class="container-img">
+                        <img class="img-member" src="../assets/images/logo.png.png" />
+                    </div>
+
+                    <div class="container-modal">
+                        <div class="container-info-row" style="padding-bottom: 5%;">
+                            <i class="pi pi-users " style="padding-right:15%; font-size: 1.5rem"></i>
+                            <div style="white-space: nowrap;">{{member.nome + " " + member.cognome }}</div>
+                        </div>
+                        <div class="container-info-row" style="padding-bottom: 5%;">
+                            <i class="pi pi-calendar " style="padding-right:15%; font-size: 1.5rem"></i>
+                            <div style="white-space: nowrap;">{{ member.mansione }}</div>
+                        </div>
+                        <div class="container-info-row" style="padding-bottom: 5%;">
+                            <i class="pi pi-book " style="font-size: 1.5rem"
+                                style="padding-right:15%;font-size: 1.5rem"></i>
+                            <div style="white-space: nowrap;">{{ member.ruolo }}</div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template pTemplate="footer">
+                    <p-button class="button-modal" [text]="true" icon="pi pi-check " (click)="member.visible = false"
+                        label="Close" severity="danger" pAutoFocus [autofocus]="true"></p-button>
+                </ng-template>
+            </p-dialog>
+
+
+
         </div>
+
     </p-card>
 </div>
