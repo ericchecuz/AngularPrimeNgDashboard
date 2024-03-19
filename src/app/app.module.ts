@@ -29,6 +29,9 @@ import { DialogModule } from 'primeng/dialog';
 import { CardTeamMembersComponent } from './components/card-team-members/card-team-members.component';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +40,11 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     UserCardComponent,
     SidebarComponent,
     CardTeamMembersComponent,
+    LoginPageComponent,
+    DashboardPageComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
