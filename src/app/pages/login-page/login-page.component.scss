@@ -25,6 +25,8 @@
 
 .card.animate {
   transform: scale(1); /* Dimensione finale normale */
+  width: 608px;
+  height: 362px;
 }
 
 @keyframes bounce {
@@ -54,4 +56,43 @@
   justify-content: center;
   align-items: center;
   border-radius: 13px;
+}
+
+.center-when-alone {
+  justify-content: center;
+  flex: 1;
+}
+
+/* Stile quando la sezione di login è visibile */
+.login-visible .sign-up-container {
+  // transition: transform 0.5s ease-in;
+  // transform: translateY(0); /* Posizione iniziale */
+}
+
+/* Stile quando la sezione di login non è visibile */
+.main:not(.login-visible) .sign-up-container {
+  // transition: transform 0.5s ease-in;
+  // transform: translate(71%, 20%); /* Sposta verso il centro */
+}
+
+/* Assicurati che il contenitore del pulsante abbia un punto di riferimento per l'animazione */
+// .sign-up-container {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.sign-up-container {
+  transition: transform 0.5s ease-in-out;
+}
+
+.login-visible .sign-up-container {
+  transform: translateY(0);
+}
+
+/* Aggiunta per gestire il layout flex quando showLogin è false */
+.not-login-visible .flex-column-on-mobile {
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
 }

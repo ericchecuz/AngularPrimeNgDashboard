@@ -13,6 +13,22 @@ export class LoginPageComponent {
   email: string = '';
   password: string = '';
 
+  showLogin = true; // Mostra la vista di login per default
+
+  toggleView() {
+    this.showLogin = !this.showLogin;
+  }
+
+  handleClick() {
+    if (this.showLogin) {
+      // Se siamo nella vista di login, cambiamo vista verso la registrazione
+      this.toggleView();
+    } else {
+      // Se siamo già nella vista di registrazione, tentiamo di registrare l'utente
+      this.register();
+    }
+  }
+
 
   login() {
 
@@ -28,6 +44,30 @@ export class LoginPageComponent {
 
     this.authService.login(this.email, this.password);
     console.log(this.email, this.password);
+
+    this.email = '';
+    this.password = '';
+
+  }
+
+
+  register() {
+
+    if (this.email == '') {
+      alert('Please enter email');
+      return;
+    }
+
+    if (this.password == '') {
+      alert('Please enter password');
+      return;
+    }
+
+    this.authService.register(this.email, this.password);
+    console.log(this.authService.authOk)
+    if (this.authService.authOk == true) {
+      this.showLogin = true;
+    }
 
     this.email = '';
     this.password = '';

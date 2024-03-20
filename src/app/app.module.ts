@@ -33,8 +33,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { environment } from 'src/enviroments/enviroments';
-import { AngularFireModule } from '@angular/fire/compat'
-import { AngularFireAuthModule } from '@angular/fire/compat/auth'
+import { AngularFireModule } from '@angular/fire/compat';
+import { RegisterComponent } from './components/register-component/register-component.component'
+
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth'
     CardTeamMembersComponent,
     LoginPageComponent,
     DashboardPageComponent,
+    RegisterComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -73,8 +75,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth'
     ScrollTopModule,
     ScrollPanelModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
-    FormsModule,
+    AngularFireModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
