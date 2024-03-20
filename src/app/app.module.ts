@@ -32,6 +32,9 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { environment } from 'src/enviroments/enviroments';
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 
 @NgModule({
   declarations: [
@@ -69,8 +72,11 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
     DialogModule,
     ScrollTopModule,
     ScrollPanelModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

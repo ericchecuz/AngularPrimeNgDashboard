@@ -3,14 +3,15 @@
         <div class="flex flex-column md:flex-row">
             <div class="w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3 py-5">
                 <div class="flex flex-wrap justify-content-center align-items-center gap-2">
-                    <label class="w-6rem">Username</label>
-                    <input pInputText id="username" type="text" class="w-12rem" />
+                    <label for="username" class="w-6rem">Username</label>
+                    <input pInputText id="username" type="text" [(ngModel)]="email" class="w-12rem" name="email" />
                 </div>
                 <div class="flex flex-wrap justify-content-center align-items-center gap-2">
-                    <label class="w-6rem">Password</label>
-                    <input pInputText id="password" type="password" class="w-12rem" />
+                    <label for="password" class="w-6rem">Password</label>
+                    <input pInputText id="password" type="password" [(ngModel)]="password" class="w-12rem"
+                        name="password" />
                 </div>
-                <p-button label="Login" icon="pi pi-user" styleClass="w-10rem mx-auto"></p-button>
+                <p-button label="Login" icon="pi pi-user" (onClick)="login()" styleClass="w-10rem mx-auto"></p-button>
             </div>
             <div class="w-full md:w-2">
                 <p-divider layout="vertical" styleClass="hidden md:flex"><b>OR</b></p-divider>
