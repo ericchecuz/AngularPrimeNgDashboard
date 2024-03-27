@@ -37,10 +37,10 @@ export class AuthService {
       this.authOk = true;
       alert('Registration Successful');
       // this.sendEmailForVarification(res.user);
-      this.router.navigate(['/login']);
+      this.router.navigate(['home']);
     }, err => {
       alert(err.message);
-      this.router.navigate(['/register']);
+      this.router.navigate(['/login']);
     })
   }
 

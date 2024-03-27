@@ -12,6 +12,8 @@ export class LoginPageComponent {
   @ViewChild('cardAnimate') cardLogin!: ElementRef;
   email: string = '';
   password: string = '';
+  confirmPassword: string = '';
+
 
   showLogin = true; // Mostra la vista di login per default
 
@@ -22,6 +24,9 @@ export class LoginPageComponent {
   handleClick() {
     if (this.showLogin) {
       // Se siamo nella vista di login, cambiamo vista verso la registrazione
+      const card = this.cardLogin.nativeElement;
+      card.classList.add('signup');
+      card.classList.remove('bounce');
       this.toggleView();
     } else {
       // Se siamo già nella vista di registrazione, tentiamo di registrare l'utente
@@ -29,6 +34,12 @@ export class LoginPageComponent {
     }
   }
 
+  backLogin() {
+    const card = this.cardLogin.nativeElement;
+    card.classList.remove('signup');
+    this.toggleView();
+    card.classList.add('bounce');
+  }
 
   login() {
 
@@ -60,6 +71,11 @@ export class LoginPageComponent {
 
     if (this.password == '') {
       alert('Please enter password');
+      return;
+    }
+
+    if (this.password !== this.confirmPassword) {
+      alert('Passwords do not match');
       return;
     }
 

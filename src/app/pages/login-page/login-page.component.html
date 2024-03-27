@@ -4,31 +4,44 @@
             <div *ngIf="showLogin;"
                 class="w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3  py-5">
                 <div class="flex flex-wrap justify-content-center align-items-center gap-2 ">
-                    <label class="w-6rem">Email</label>
+                    <label class="w-6rem text-login">Email</label>
                     <input pInputText id="e-mail" type="text" class="w-12rem" [(ngModel)]="email" />
                 </div>
-                <div class="flex flex-wrap justify-content-center align-items-center gap-2">
-                    <label class="w-6rem">Password</label>
+                <div class="flex flex-wrap justify-content-center align-items-center gap-2 "
+                    style="padding-bottom: 10px;">
+                    <label class="w-6rem text-login">Password</label>
                     <input pInputText id="password" type="password" class="w-12rem" [(ngModel)]="password"
                         name="password" />
                 </div>
                 <p-button label="Login" icon="pi pi-user" styleClass="w-10rem mx-auto" (click)="login()"></p-button>
             </div>
             <div *ngIf="showLogin;" class="w-full md:w-2">
-                <p-divider layout="vertical" styleClass="hidden md:flex"><b>OR</b></p-divider>
-                <p-divider layout="horizontal" styleClass="flex md:hidden" [align]="'center'"><b>OR</b></p-divider>
+                <p-divider layout="vertical" styleClass="hidden md:flex"></p-divider>
             </div>
             <div *ngIf="!showLogin;"
-                class="w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3 py-5">
-                <div class="flex flex-wrap justify-content-center align-items-center gap-2">
-                    <label class="w-6rem">Email</label>
-                    <input pInputText id="e-mail" type="text" class="w-12rem" [(ngModel)]="email" />
+                class="container-signup w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3 py-5">
+                <div class="container-back">
+                    <p-button icon="pi pi-arrow-left" (click)="backLogin()"></p-button>
                 </div>
-                <div class="flex flex-wrap justify-content-center align-items-center gap-2">
-                    <label class="w-6rem">Password</label>
-                    <input pInputText id="password" type="password" class="w-12rem" [(ngModel)]="password"
-                        name="password" />
+                <div class="container-inputs">
+                    <div class="flex flex-wrap justify-content-center align-items-center gap-2">
+                        <label class="w-6rem text-login">Email</label>
+                        <input pInputText id="e-mail" type="text" class="w-12rem" [(ngModel)]="email" />
+                    </div>
+
+                    <div class="flex flex-wrap justify-content-center align-items-center gap-2">
+                        <label class="w-6rem text-login">Password *</label>
+                        <input pInputText id="password" type="password" class="w-12rem" [(ngModel)]="password"
+                            name="password" />
+                    </div>
+
+                    <div class="flex flex-wrap justify-content-center align-items-center gap-2">
+                        <label class="w-6rem text-login">Confirm Password</label>
+                        <input pInputText id="confirm-password" type="password" class="w-12rem"
+                            [(ngModel)]="confirmPassword" name="confirmPassword" />
+                    </div>
                 </div>
+
             </div>
             <div class="w-full md:w-5 flex align-items-center justify-content-center  sign-up-container">
                 <p-button label="Sign Up" icon="pi pi-user-plus" (click)="handleClick()"
