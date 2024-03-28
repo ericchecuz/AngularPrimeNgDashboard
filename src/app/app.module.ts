@@ -35,6 +35,9 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { environment } from 'src/enviroments/enviroments';
 import { AngularFireModule } from '@angular/fire/compat';
 import { RegisterComponent } from './components/register-component/register-component.component'
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+
 
 
 @NgModule({
@@ -76,6 +79,8 @@ import { RegisterComponent } from './components/register-component/register-comp
     ScrollPanelModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireModule,
+    MessagesModule,
+    MessageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

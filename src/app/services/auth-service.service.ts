@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider } from '@angular/fire/auth'
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   authOk: boolean = false;
+  error: string = "";
+  logOk: boolean = false;
 
   constructor(private fireauth: AngularFireAuth, private router: Router) { }
 
@@ -20,13 +23,13 @@ export class AuthService {
       if (res.user?.emailVerified == true) {
         this.router.navigate(['home']);
         console.log("login OK ")
-      } else {
-        this.router.navigate(['home']);
-        console.log("login NOT OK ")
       }
 
     }, err => {
-      alert(err.message);
+      this.logOk = false;
+      this.error = err.message;
+      console.log(this.error + "error")
+
       this.router.navigate(['/login']);
     })
   }
@@ -37,9 +40,11 @@ export class AuthService {
       this.authOk = true;
       alert('Registration Successful');
       // this.sendEmailForVarification(res.user);
-      this.router.navigate(['home']);
     }, err => {
-      alert(err.message);
+      this.authOk = false;
+      this.error = err.message;
+      console.log(this.error + "error")
+
       this.router.navigate(['/login']);
     })
   }

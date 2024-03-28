@@ -1,14 +1,19 @@
 
-import { Component, ElementRef, HostBinding, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth-service.service';
+import { Message, MessageService } from 'primeng/api';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
+  providers: [MessageService]
 })
-export class LoginPageComponent {
-  constructor(private elementRef: ElementRef, private authService: AuthService) { }
+export class LoginPageComponent implements OnInit {
+  constructor(private elementRef: ElementRef, private authService: AuthService, private messageService: MessageService) { }
   @ViewChild('cardAnimate') cardLogin!: ElementRef;
   email: string = '';
   password: string = '';
@@ -17,6 +22,11 @@ export class LoginPageComponent {
 
   showLogin = true; // Mostra la vista di login per default
 
+
+
+  ngOnInit() {
+
+  }
   toggleView() {
     this.showLogin = !this.showLogin;
   }
@@ -44,17 +54,21 @@ export class LoginPageComponent {
   login() {
 
     if (this.email == '') {
-      alert('Please enter email');
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Insert the E-mail' });
       return;
     }
 
     if (this.password == '') {
-      alert('Please enter password');
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Insert the password' });
       return;
     }
 
     this.authService.login(this.email, this.password);
-    console.log(this.email, this.password);
+    if (this.authService.logOk == false) {
+      console.log(this.authService.error + "errore")
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: this.authService.error });
+      this.showLogin = true;
+    }
 
     this.email = '';
     this.password = '';
@@ -63,26 +77,33 @@ export class LoginPageComponent {
 
 
   register() {
+    const card = this.cardLogin.nativeElement;
 
     if (this.email == '') {
-      alert('Please enter email');
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Insert the E-mail' });
       return;
     }
 
     if (this.password == '') {
-      alert('Please enter password');
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Insert the password' });
       return;
     }
 
     if (this.password !== this.confirmPassword) {
-      alert('Passwords do not match');
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Password do not match' });
       return;
     }
 
     this.authService.register(this.email, this.password);
     console.log(this.authService.authOk)
     if (this.authService.authOk == true) {
+      this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
+      card.classList.remove('signup');
       this.showLogin = true;
+    }
+    if (this.authService.authOk == false) {
+
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: this.authService.error })
     }
 
     this.email = '';
@@ -103,5 +124,21 @@ export class LoginPageComponent {
 
 
 
+  }
+
+
+  addSingle() {
+    this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
+  }
+
+  addMultiple() {
+    this.messageService.addAll([
+      { severity: 'success', summary: 'Service Message', detail: 'Via MessageService' },
+      { severity: 'info', summary: 'Info Message', detail: 'Via MessageService' }
+    ]);
+  }
+
+  clear() {
+    this.messageService.clear();
   }
 }

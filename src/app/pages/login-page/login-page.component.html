@@ -1,17 +1,26 @@
 <div class="main" [class.login-visible]="showLogin" [class.not-login-visible]="!showLogin">
+    <div class="container-alert">
+        <p-messages [showTransitionOptions]="'300ms'" [hideTransitionOptions]="'300ms'"></p-messages>
+    </div>
     <div class="card" #cardAnimate>
         <div class="flex flex-column md:flex-row flex-column-on-mobile" [class.login-visible]="showLogin">
             <div *ngIf="showLogin;"
                 class="w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3  py-5">
                 <div class="flex flex-wrap justify-content-center align-items-center gap-2 ">
                     <label class="w-6rem text-login">Email</label>
-                    <input pInputText id="e-mail" type="text" class="w-12rem" [(ngModel)]="email" />
+                    <input pInputText id="e-mail" type="text" class="w-12rem" #emailModel="ngModel" [(ngModel)]="email"
+                        class="ng-dirty ng-invalid " required aria-describedby="username-help" />
+                    <small id="username-help" *ngIf="emailModel.touched && !emailModel.valid" class="p-error">Insert
+                        email</small>
                 </div>
                 <div class="flex flex-wrap justify-content-center align-items-center gap-2 "
                     style="padding-bottom: 10px;">
                     <label class="w-6rem text-login">Password</label>
-                    <input pInputText id="password" type="password" class="w-12rem" [(ngModel)]="password"
-                        name="password" />
+                    <input pInputText id="password" type="password" class="w-12rem" #pswdModel="ngModel"
+                        [(ngModel)]="password" name="password" class="ng-dirty ng-invalid " required
+                        aria-describedby="username-help" />
+                    <small id="username-help" *ngIf="pswdModel.touched && !pswdModel.valid" class="p-error">Insert
+                        password</small>
                 </div>
                 <p-button label="Login" icon="pi pi-user" styleClass="w-10rem mx-auto" (click)="login()"></p-button>
             </div>
@@ -49,5 +58,7 @@
             </div>
 
         </div>
+    </div>
+    <div class="card">
     </div>
 </div>

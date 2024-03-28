@@ -26,8 +26,9 @@
 .card.animate {
   transform: scale(1); /* Dimensione finale normale */
   width: 608px;
-  height: 310px;
+  height: 340px;
   text-align: center;
+  display: flex;
 }
 
 .card.signup {
@@ -135,4 +136,16 @@
   width: 75%;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+.container-alert {
+  display: inline;
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  top: 50px;
+}
+
+::ng-deep .p-message .p-message-wrapper {
+  padding: 1rem 1rem;
 }
