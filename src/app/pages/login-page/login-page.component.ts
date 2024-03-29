@@ -70,8 +70,6 @@ export class LoginPageComponent implements OnInit {
       this.showLogin = true;
     }
 
-    this.email = '';
-    this.password = '';
 
   }
 
@@ -97,7 +95,7 @@ export class LoginPageComponent implements OnInit {
     this.authService.register(this.email, this.password);
     console.log(this.authService.authOk)
     if (this.authService.authOk == true) {
-      this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Registration succesful' });
       card.classList.remove('signup');
       this.showLogin = true;
     }

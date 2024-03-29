@@ -3,15 +3,16 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider } from '@angular/fire/auth'
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  authOk: boolean = false;
+  authOk: boolean | undefined;
   error: string = "";
-  logOk: boolean = false;
+  logOk: boolean | undefined;
 
   constructor(private fireauth: AngularFireAuth, private router: Router) { }
 
@@ -20,10 +21,11 @@ export class AuthService {
     this.fireauth.signInWithEmailAndPassword(email, password).then(res => {
       localStorage.setItem('token', 'true');
 
-      if (res.user?.emailVerified == true) {
-        this.router.navigate(['home']);
-        console.log("login OK ")
-      }
+      // if (res.user?.emailVerified == true) {
+      this.logOk = true;
+      this.router.navigate(['home']);
+      console.log("login OK ")
+      // }
 
     }, err => {
       this.logOk = false;
@@ -38,7 +40,6 @@ export class AuthService {
   register(email: string, password: string) {
     this.fireauth.createUserWithEmailAndPassword(email, password).then(res => {
       this.authOk = true;
-      alert('Registration Successful');
       // this.sendEmailForVarification(res.user);
     }, err => {
       this.authOk = false;
@@ -48,6 +49,26 @@ export class AuthService {
       this.router.navigate(['/login']);
     })
   }
+
+  getCurrentUserId() {
+    return this.fireauth.currentUser.then(user => user ? user.uid : null);
+  }
+
+  // Nuovo metodo per ottenere l'utente corrente come Observable
+  getCurrentUser(): Observable<any> {
+    return this.fireauth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          // L'utente è loggato, restituiamo un observable dell'utente
+          return of(user);
+        } else {
+          // Nessun utente loggato, restituiamo un observable di null
+          return of(null);
+        }
+      })
+    );
+  }
+
 
   // sign out
   logout() {

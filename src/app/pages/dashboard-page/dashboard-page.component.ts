@@ -1,23 +1,11 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  AfterViewInit,
-  OnInit,
-  ViewChild,
-  QueryList,
-  ViewChildren,
-} from '@angular/core';
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-  state,
-} from '@angular/animations';
+import { Component, ElementRef, EventEmitter, HostListener, AfterViewInit, OnInit, ViewChild, QueryList, ViewChildren, } from '@angular/core';
+import { trigger, transition, style, animate, state, } from '@angular/animations';
 import { AppService } from 'src/app/app.service';
 import { TooltipOptions } from 'primeng/api';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AuthService } from 'src/app/services/auth-service.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -41,8 +29,8 @@ import { TooltipOptions } from 'primeng/api';
     ]),
   ],
 })
-export class DashboardPageComponent {
-  constructor(private appService: AppService, private elementRef: ElementRef) {}
+export class DashboardPageComponent implements OnInit {
+  constructor(private appService: AppService, private elementRef: ElementRef, private firestore: AngularFirestore, private fireBaseAuth: AuthService) { }
   @ViewChildren('containerButton') containerButton!: QueryList<ElementRef>;
   @ViewChild('containerMenu') containerMenu!: ElementRef;
   showLabel: boolean = true;
@@ -108,8 +96,27 @@ export class DashboardPageComponent {
     // setTimeout(() => {
     //   this.checkContainerSize();
     // }, 0);
+    this.fireBaseAuth.getCurrentUser().subscribe(user => {
+      if (user) {
+        console.log('Utente loggato:', user);
+        // Fai qualcosa con l'utente loggato
+      } else {
+        console.log('Nessun utente loggato');
+      }
+    });
+
   }
 
+  async addLeaveForCurrentUser(leaveData: any) {
+    const user = await firstValueFrom(this.fireBaseAuth.getCurrentUser());
+    const userId = user ? user.uid : null;
+    console.log(user + " - " + user + " - " + user.uid + " uid ");
+    if (userId) {
+      return this.firestore.collection(`users/${userId}/leaves`).add(leaveData);
+    } else {
+      throw new Error('No user logged in');
+    }
+  }
   themes = [
     {
       id: 'lara-light-blue',
